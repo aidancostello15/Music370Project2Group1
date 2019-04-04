@@ -1,19 +1,19 @@
 body {
   text-align: center;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  color: pink;
+  color: #edecee;
   margin-top: 7em;
-  background-color: lime;
+  background-color: #3f3f40;
 }
 
-.btn-transport {
+.play-transport {
   font-size: 1.5em;
   font-weight: 750;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  color: midnightblue;
+  color: #cccccc;
   padding: 1em 2em;
   margin: .1em .2em;
-  border: 3px solid orange;
+  border: 3px solid #0f2a79;
   border-radius: 3px;
   background: none;
   transition: color .2s,
@@ -24,14 +24,14 @@ body {
   margin .2s;
 }
 
-.btn-transport1 {
+.stop-transport {
   font-size: 1.5em;
   font-weight: 750;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  color: midnightblue;
+  color: #cccccc;
   padding: 1em 2em;
   margin: .1em .2em;
-  border: 3px solid yellow;
+  border: 3px solid #0b0f7f;
   border-radius: 3px;
   background: none;
   transition: color .2s,
@@ -42,14 +42,14 @@ body {
   margin .2s;
 }
 
-.btn-transport2 {
+.horn-transport {
   font-size: 1.5em;
   font-weight: 750;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  color: midnightblue;
+  color: #cccccc;
   padding: 1em 2em;
   margin: .1em .2em;
-  border: 3px solid red;
+  border: 3px solid #2f097f;
   border-radius: 3px;
   background: none;
   transition: color .2s,
@@ -60,14 +60,14 @@ body {
   margin .2s;
 }
 
-.btn-transport3 {
+.oof-transport {
   font-size: 1.5em;
   font-weight: 750;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  color: midnightblue;
+  color: #cccccc;
   padding: 1em 2em;
   margin: .1em .2em;
-  border: 3px solid blue;
+  border: 3px solid #351174;
   border-radius: 3px;
   background: none;
   transition: color .2s,
@@ -78,7 +78,79 @@ body {
   margin .2s;
 }
 
-.btn-transport:hover {
+.masterplay-transport {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #cccccc;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid #2f097f;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.play-transport {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #cccccc;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid #0f2a79;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.loop-transport {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #cccccc;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid #0f2a79;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.noloop-transport {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #cccccc;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid #0b0f7f;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.play-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
   border-radius: 8px;
@@ -87,7 +159,7 @@ body {
   border-color: limegreen;
 }
 
-.btn-transport1:hover {
+.stop-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
   border-radius: 8px;
@@ -96,7 +168,16 @@ body {
   border-color: red;
 }
 
-.btn-transport2:hover {
+.horn-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: purple;
+  border-color: purple;
+}
+
+.oof-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
   border-radius: 8px;
@@ -105,13 +186,31 @@ body {
   border-color: darkviolet;
 }
 
-.btn-transport3:hover {
+.masterplay-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
   border-radius: 8px;
   cursor: pointer;
   color: coral;
   border-color: coral;
+}
+
+.loop-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: limegreen;
+  border-color: limegreen;
+}
+
+.noloop-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: red;
+  border-color: red;
 }
 
 label {
