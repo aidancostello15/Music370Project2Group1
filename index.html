@@ -1,0 +1,145 @@
+<!-- This is a comment in HTML -->
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>ya YEET mofos</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>u lost boi???</h1>
+</header>
+
+<main>
+  <h2>Welcome to my Club Penguin fan page!</h2>
+  <button id="playButton" class="btn-transport" type="button">kazoo</button>
+  <button id="stopButton" class="btn-transport1" type="button">no kazoo</button>
+  <button id="doNotPress" class="btn-transport2" type="button">pls no press</button>
+  <button id="OOF" class="btn-transport2" type="button">OOF</button>
+  <button id="transportButton" class="btn-transport3" type="button">transport</button>
+  <button id="playButton1" class="btn-transport" type="button">loop</button>
+  <button id="stopButton1" class="btn-transport1" type="button">no loop</button>
+  <fieldset>
+    <legend>use slider for some dank memes</legend>
+    <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
+    <input type="range" id="pitchShiftSlider" name="pitchShiftSlider" min="-14" max="14" step="0.5" />
+  </fieldset>
+</main>
+
+<script src="js/Tone.js"></script>
+
+<script>
+
+//memes
+// Create a pitch shifter and connect its output to the master out
+var pitchShift = new Tone.PitchShift().toMaster();
+
+// Create a synth and connect it to the pitch shifter
+var synth = new Tone.Synth({
+  oscillator: {
+    type: 'sawtooth'
+  },
+  envelope: {
+    attack: 0.01,
+    decay: 0.1,
+    sustain: 0.5,
+    release: 1
+  }
+}).connect(pitchShift);
+
+// Sample code to load a sound file
+// NOTE: This sound file is not played in this script
+var clave = new Tone.Player('audio/clave.mp3').toMaster();
+var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
+var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster();
+var oof = new Tone.Player("audio/oof.mp3").toMaster();
+
+// Bind slider value to pitch shift amount
+// Every change in slider value triggers change in pitch shift
+// It's silly to pitch shift a synthesizer, right?
+// But what else could we pitch shift?
+var pitchShiftLabel = document.querySelector('#pitchShiftLabel');
+var pitchShiftSlider = document.querySelector('#pitchShiftSlider');
+pitchShiftSlider.addEventListener('input', function() {
+  // assign slider value to pitch shift amount (in semitones)
+  pitchShift.pitch = pitchShiftSlider.value;
+  // update slider label
+  pitchShiftLabel.innerHTML = pitchShiftSlider.value;
+});
+
+// The following block of code will run when the play button is clicked
+// document.querySelector('#playButton1').onclick = function() {
+  // console.log('The play button has been clicked.');
+
+  // synth.triggerAttack("C4");
+
+  // Play a middle C, which will sound until the stop button is clicked
+// };
+
+// The following block of code will run when the play button is clicked
+
+// create a loop
+var loop = new Tone.Loop(function(time) {
+	synth.triggerAttackRelease("Db1", "8n", time);
+}, "4n");
+
+document.querySelector('#playButton1').onclick = function() {
+  console.log('The loop has started');
+
+  // Start synth loop
+  loop.start()
+};
+
+document.querySelector('#stopButton1').onclick = function() {
+  console.log('The loop has stopped');
+
+  // Stop synth loop
+  loop.stop();
+};
+
+
+// All the button functions
+document.querySelector('#playButton').onclick = function() {
+  console.log('Initiating start protocol');
+
+  // Start Kazoo Kid
+  kazoo_kid.start()
+};
+
+document.querySelector('#stopButton').onclick = function() {
+  console.log('Initiating stop protocol');
+
+  // Stop Kazoo Kid
+  kazoo_kid.stop()
+};
+
+document.querySelector('#doNotPress').onclick = function() {
+  console.log('The world is ending');
+
+  // Start air horn
+  air_horn.start()
+};
+
+document.querySelector('#OOF').onclick = function() {
+  console.log('rip roblox');
+
+  // Start OOF
+  oof.start()
+};
+
+document.querySelector('#transportButton').onclick = function() {
+  console.log('transport dat ish');
+
+  // Start the audio context
+  Tone.context.resume();
+
+  // Start or stop transport
+  Tone.Transport.toggle();
+};
+
+</script>
+
+</body>
+</html>

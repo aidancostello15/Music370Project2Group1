@@ -1,0 +1,119 @@
+body {
+  text-align: center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: pink;
+  margin-top: 7em;
+  background-color: lime;
+}
+
+.btn-transport {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: midnightblue;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid orange;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.btn-transport1 {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: midnightblue;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid yellow;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.btn-transport2 {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: midnightblue;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid red;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.btn-transport3 {
+  font-size: 1.5em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: midnightblue;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid blue;
+  border-radius: 3px;
+  background: none;
+  transition: color .2s,
+  border .2s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
+.btn-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: limegreen;
+  border-color: limegreen;
+}
+
+.btn-transport1:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: red;
+  border-color: red;
+}
+
+.btn-transport2:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: fuchsia;
+  border-color: darkviolet;
+}
+
+.btn-transport3:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: coral;
+  border-color: coral;
+}
+
+label {
+  display: block;
+}
