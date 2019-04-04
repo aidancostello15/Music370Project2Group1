@@ -85,9 +85,13 @@ var loop = new Tone.Loop(function(time) {
 	synth.triggerAttackRelease("Db1", "8n", time);
 }, "4n");
 
-var oofLoop = new Tone.Loop(function(time) {
-  oof.start(time);
-}, "4n");
+// A universal loop that you can put any sound in
+function universalLoop(sound) {
+  var soundLoop = new Tone.Loop(function(time) {
+    sound.start(time);
+  }, "4n");
+  soundLoop.start();
+}
 
 document.querySelector('#playButton1').onclick = function() {
   console.log('The loop has started');
@@ -122,16 +126,15 @@ document.querySelector('#stopButton').onclick = function() {
 
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
-
+  universalLoop(air_horn);
   // Start air horn
-  air_horn.start()
+  //air_horn.start()
 };
 
 document.querySelector('#OOF').onclick = function() {
   console.log('rip roblox');
 
-  // Start OOF
-  oofLoop.start()
+  universalLoop(oof);
 };
 
 document.querySelector('#transportButton').onclick = function() {
