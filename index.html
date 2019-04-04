@@ -85,12 +85,17 @@ var loop = new Tone.Loop(function(time) {
 	synth.triggerAttackRelease("Db1", "8n", time);
 }, "4n");
 
+var oofLoop = new Tone.Loop(function(time) {
+  oof.start(time);
+}, "4n");
+
 document.querySelector('#playButton1').onclick = function() {
   console.log('The loop has started');
 
   // Start synth loop
   loop.start()
 };
+
 
 document.querySelector('#stopButton1').onclick = function() {
   console.log('The loop has stopped');
@@ -126,7 +131,7 @@ document.querySelector('#OOF').onclick = function() {
   console.log('rip roblox');
 
   // Start OOF
-  oof.start()
+  oofLoop.start()
 };
 
 document.querySelector('#transportButton').onclick = function() {
