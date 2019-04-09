@@ -32,6 +32,9 @@
 
 <script>
 
+//VOLUME:
+//synth.volume.value = 0 (interpreted in decibels, -5, -12, +2, -1, etc)
+
 //memes
 // Create a pitch shifter and connect its output to the master out
 var pitchShift = new Tone.PitchShift().toMaster();
@@ -86,10 +89,10 @@ var loop = new Tone.Loop(function(time) {
 }, "4n");
 
 // A universal loop that you can put any sound in
-function universalLoop(sound) {
+function universalLoop(sound, rapid) {
   var soundLoop = new Tone.Loop(function(time) {
     sound.start(time);
-  }, "4n");
+  }, rapid);
   soundLoop.start();
 }
 
@@ -126,7 +129,7 @@ document.querySelector('#stopButton').onclick = function() {
 
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
-  universalLoop(air_horn);
+  universalLoop(air_horn, "4n");
   // Start air horn
   //air_horn.start()
 };
@@ -134,7 +137,7 @@ document.querySelector('#doNotPress').onclick = function() {
 document.querySelector('#OOF').onclick = function() {
   console.log('rip roblox');
 
-  universalLoop(oof);
+  universalLoop(oof, "8n");
 };
 
 document.querySelector('#transportButton').onclick = function() {
