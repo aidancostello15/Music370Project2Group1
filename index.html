@@ -55,6 +55,7 @@ var clave = new Tone.Player('audio/clave.mp3').toMaster();
 var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
 var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster();
 var oof = new Tone.Player("audio/oof.mp3").toMaster();
+var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster();
 
 // Bind slider value to pitch shift amount
 // Every change in slider value triggers change in pitch shift
@@ -110,19 +111,19 @@ document.querySelector('#stopButton1').onclick = function() {
 
 
 // All the button functions
-document.querySelector('#playButton').onclick = function() {
-  console.log('Initiating start protocol');
+//document.querySelector('#playButton').onclick = function() {
+  //console.log('Initiating start protocol');
 
   // Start Kazoo Kid
-  kazoo_kid.start()
-};
+  //kazoo_kid.start()
+//};
 
-document.querySelector('#stopButton').onclick = function() {
-  console.log('Initiating stop protocol');
+//document.querySelector('#stopButton').onclick = function() {
+  //console.log('Initiating stop protocol');
 
   // Stop Kazoo Kid
-  kazoo_kid.stop()
-};
+  //kazoo_kid.stop()
+//};
 
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
@@ -145,12 +146,6 @@ pitchShiftSlider.addEventListener('input', function() {
   // update slider label
   pitchShiftLabel.innerHTML = pitchShiftSlider.value;
 });
-// Start the Audio Context
-Tone.context.resume();
-
-riosound.start();
-
-
 
 //create a loop
 var loop = new Tone.Loop(function(time){
@@ -158,19 +153,19 @@ var loop = new Tone.Loop(function(time){
 }, "4n");
 //play the loop between 0-2m on the transport
 loop.start(0).stop('8m')
-
+};
 
 // The following block of code will run when the play button is clicked
 document.querySelector('#startButton').onclick = function() {
   console.log('The start button has been clicked.');
 
   // Start the Audio Context
-  Tone.context.resume()
+  //Tone.context.resume()
 
   ricosound.start();
 
   // start or stop transport
-  Tone.Transport.toggle();
+  //Tone.Transport.toggle();
 };
 
 // The following block of code will run when the stop button is clicked
@@ -179,7 +174,7 @@ document.querySelector('#stopButton').onclick = function() {
 
   ricosound.stop()
 
-
+};
 
 document.querySelector('#transportButton').onclick = function() {
   console.log('transport dat ish');
