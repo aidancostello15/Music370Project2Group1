@@ -26,6 +26,11 @@
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
     <input type="range" id="pitchShiftSlider" name="pitchShiftSlider" min="-14" max="14" step="0.5" />
   </fieldset>
+  <fieldset>
+    <legend>speed up or slow down</legend>
+    <label id="tempoLabel" for="tempoSlider">120</label>
+    <input type="range" id="tempoSlider" name="pitchShiftSlider" min="60" max="240" step="5" />
+  </fieldset>
 </main>
 
 <script src="js/Tone.js"></script>
@@ -72,6 +77,12 @@ pitchShiftSlider.addEventListener('input', function() {
   // update slider label
   pitchShiftLabel.innerHTML = pitchShiftSlider.value;
 });
+tempoSlider.addEventListener('input', function() {
+  // assign slider value to new bpm
+  Tone.Transport.bpm.value = tempoSlider.value;
+  // update slider label
+  tempoLabel.innerHTML = tempoSlider.value;
+});
 
 // The following block of code will run when the play button is clicked
 // document.querySelector('#playButton1').onclick = function() {
@@ -83,7 +94,6 @@ pitchShiftSlider.addEventListener('input', function() {
 // };
 
 // The following block of code will run when the play button is clicked
-
 
 //LOOP FUNCTIONS
 // A universal loop that you can put any sound in
@@ -122,7 +132,7 @@ airHornLoop.start();
 ricoLoop.start();
 
 //Mute all the loops
-synthLoop.mute =
+synthLoop.mute = true;
 oofLoop.mute = true;
 airHornLoop.mute = true;
 ricoLoop.mute = true
