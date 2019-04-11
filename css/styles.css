@@ -132,7 +132,9 @@ body {
   margin .2s;
 }
 
-.noloop-transport {
+<<<<<<< HEAD
+=======
+.rico-transport {
   font-size: 1.5em;
   font-weight: 750;
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -150,6 +152,7 @@ body {
   margin .2s;
 }
 
+>>>>>>> AidanBranch
 .play-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
@@ -204,7 +207,9 @@ body {
   border-color: limegreen;
 }
 
-.noloop-transport:hover {
+<<<<<<< HEAD
+=======
+.rico-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
   border-radius: 8px;
@@ -213,6 +218,7 @@ body {
   border-color: red;
 }
 
+>>>>>>> AidanBranch
 label {
   display: block;
 }

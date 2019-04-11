@@ -11,16 +11,23 @@
 <header>
   <h1>u lost boi???</h1>
 </header>
-
+  <img src="images/clubpenguinfire.jpg" width="750" height="500">
 <main>
   <h2>Welcome to my Club Penguin fan page!</h2>
-  <img src="clubpenguinfire.png" alt="Burn Baby Burn">
   <button id="playButton" class="play-transport" type="button">kazoo</button>
   <button id="stopButton" class="stop-transport" type="button">no kazoo</button>
   <button id="doNotPress" class="horn-transport" type="button">air horn</button>
   <button id="OOF" class="oof-transport" type="button">OOF</button>
   <button id="transportButton" class="masterplay-transport" type="button">transport</button>
+<<<<<<< HEAD
   <button id="playButton1" class="loop-transport" type="button">synth</button>
+=======
+  <button id="playButton1" class="loop-transport" type="button">loop</button>
+<<<<<<< HEAD
+=======
+  <button id="ricardo" class="rico-transport" type="button">rico</button>
+>>>>>>> AidanBranch
+>>>>>>> 58bd47de59f4cecc9dab734929a61b2f757fde07
   <fieldset>
     <legend>use slider for some dank memes</legend>
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
@@ -58,6 +65,7 @@ var clave = new Tone.Player('audio/clave.mp3').toMaster();
 var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
 var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster();
 var oof = new Tone.Player("audio/oof.mp3").toMaster();
+var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster();
 
 // Bind slider value to pitch shift amount
 // Every change in slider value triggers change in pitch shift
@@ -103,6 +111,7 @@ var oofLoop = new Tone.Loop(function(time) {
   oof.start(time);
 }, "4n");
 
+<<<<<<< HEAD
 //loop for airHorn
 var airHornLoop = new Tone.Loop(function(time) {
   air_horn.start(time);
@@ -136,6 +145,13 @@ document.querySelector('#playButton1').onclick = function() {
   }
 };
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> AidanBranch
+// All the button functions
+>>>>>>> 58bd47de59f4cecc9dab734929a61b2f757fde07
 document.querySelector('#playButton').onclick = function() {
   console.log('Initiating start protocol');
   Tone.context.resume();
@@ -177,6 +193,13 @@ document.querySelector('#OOF').onclick = function() {
   } else {
     oofLoop.mute = true
   }
+};
+
+document.querySelector('#ricardo').onclick = function() {
+  console.log('tunes');
+
+  // Start ricardo
+  ricosound.start()
 };
 
 document.querySelector('#transportButton').onclick = function() {
