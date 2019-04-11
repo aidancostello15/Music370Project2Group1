@@ -137,9 +137,49 @@ document.querySelector('#OOF').onclick = function() {
   universalLoop(oof);
 };
 
-  // Start ricosound
-  ricosound.start()
+var pitchShiftLabel = document.querySelector('#pitchShiftLabel');
+var pitchShiftSlider = document.querySelector('#pitchShiftSlider');
+pitchShiftSlider.addEventListener('input', function() {
+  // assign slider value to pitch shift amount (in semitones)
+  pitchShift.pitch = pitchShiftSlider.value;
+  // update slider label
+  pitchShiftLabel.innerHTML = pitchShiftSlider.value;
+});
+// Start the Audio Context
+Tone.context.resume();
+
+riosound.start();
+
+
+
+//create a loop
+var loop = new Tone.Loop(function(time){
+	synth.triggerAttackRelease("C1", "8n", time);
+}, "4n");
+//play the loop between 0-2m on the transport
+loop.start(0).stop('8m')
+
+
+// The following block of code will run when the play button is clicked
+document.querySelector('#startButton').onclick = function() {
+  console.log('The start button has been clicked.');
+
+  // Start the Audio Context
+  Tone.context.resume()
+
+  ricosound.start();
+
+  // start or stop transport
+  Tone.Transport.toggle();
 };
+
+// The following block of code will run when the stop button is clicked
+document.querySelector('#stopButton').onclick = function() {
+  console.log('The stop button has been clicked.');
+
+  ricosound.stop()
+
+
 
 document.querySelector('#transportButton').onclick = function() {
   console.log('transport dat ish');
