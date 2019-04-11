@@ -132,24 +132,6 @@ body {
   margin .2s;
 }
 
-.noloop-transport {
-  font-size: 1.5em;
-  font-weight: 750;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  color: #dcdcdc;
-  padding: 1em 2em;
-  margin: .1em .2em;
-  border: 3px solid #5fbad7;
-  border-radius: 3px;
-  background: none;
-  transition: color .2s,
-  border .2s,
-  border-color .2s,
-  border-radius .2s,
-  padding .2s,
-  margin .2s;
-}
-
 .play-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
@@ -202,15 +184,6 @@ body {
   cursor: pointer;
   color: limegreen;
   border-color: limegreen;
-}
-
-.noloop-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: red;
-  border-color: red;
 }
 
 label {

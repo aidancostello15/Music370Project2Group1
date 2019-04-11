@@ -21,7 +21,6 @@
   <button id="OOF" class="oof-transport" type="button">OOF</button>
   <button id="transportButton" class="masterplay-transport" type="button">transport</button>
   <button id="playButton1" class="loop-transport" type="button">loop</button>
-  <button id="stopButton1" class="noloop-transport" type="button">no loop</button>
   <fieldset>
     <legend>use slider for some dank memes</legend>
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
@@ -102,14 +101,6 @@ document.querySelector('#playButton1').onclick = function() {
 
   // Start synth loop
   loop.start()
-};
-
-
-document.querySelector('#stopButton1').onclick = function() {
-  console.log('The loop has stopped');
-
-  // Stop synth loop
-  loop.stop();
 };
 
 
