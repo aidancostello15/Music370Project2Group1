@@ -132,8 +132,6 @@ body {
   margin .2s;
 }
 
-<<<<<<< HEAD
-=======
 .rico-transport {
   font-size: 1.5em;
   font-weight: 750;
@@ -152,7 +150,6 @@ body {
   margin .2s;
 }
 
->>>>>>> AidanBranch
 .play-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
@@ -207,8 +204,6 @@ body {
   border-color: limegreen;
 }
 
-<<<<<<< HEAD
-=======
 .rico-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
@@ -218,7 +213,6 @@ body {
   border-color: red;
 }
 
->>>>>>> AidanBranch
 label {
   display: block;
 }
