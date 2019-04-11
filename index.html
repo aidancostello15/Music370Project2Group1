@@ -117,10 +117,17 @@ airHornLoop.start();
 synthLoop.mute =
 oofLoop.mute = true;
 airHornLoop.mute = true;
+Tone.Transport.start();
 
 //BUTTON FUNCTIONS
 document.querySelector('#playButton1').onclick = function() {
   console.log('The loop has started');
+  Tone.context.resume();
+  //This if statement will start the transport if it has not started
+  if(Tone.Transport.State=="stopped") {
+    Tone.Transport.start();
+  };
+  //This if statement will decide whether to mute/unmute
   if(synthLoop.mute===true){
     synthLoop.mute = false;
   } else {
@@ -128,10 +135,12 @@ document.querySelector('#playButton1').onclick = function() {
   }
 };
 
-// All the button functions
 document.querySelector('#playButton').onclick = function() {
   console.log('Initiating start protocol');
-
+  Tone.context.resume();
+  if(Tone.Transport.State=="stopped") {
+    Tone.Transport.start();
+  };
   // Start Kazoo Kid
   kazoo_kid.start()
 };
@@ -145,6 +154,10 @@ document.querySelector('#stopButton').onclick = function() {
 
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
+  Tone.context.resume();
+  if(Tone.Transport.State=="stopped") {
+    Tone.Transport.start();
+  };
   if(airHornLoop.mute===true){
     airHornLoop.mute = false;
   } else {
@@ -154,12 +167,15 @@ document.querySelector('#doNotPress').onclick = function() {
 
 document.querySelector('#OOF').onclick = function() {
   console.log('rip roblox');
+  Tone.context.resume();
+  if(Tone.Transport.State=="stopped") {
+    Tone.Transport.start();
+  }
   if(oofLoop.mute===true){
     oofLoop.mute = false;
   } else {
     oofLoop.mute = true
   }
-  //universalLoop(oof, "8n");
 };
 
 document.querySelector('#transportButton').onclick = function() {
