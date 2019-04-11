@@ -16,11 +16,10 @@
   <h2>Welcome to my Club Penguin fan page!</h2>
   <button id="playButton" class="play-transport" type="button">kazoo</button>
   <button id="stopButton" class="stop-transport" type="button">no kazoo</button>
-  <button id="doNotPress" class="horn-transport" type="button">pls no press</button>
+  <button id="doNotPress" class="horn-transport" type="button">air horn</button>
   <button id="OOF" class="oof-transport" type="button">OOF</button>
   <button id="transportButton" class="masterplay-transport" type="button">transport</button>
-  <button id="playButton1" class="loop-transport" type="button">loop</button>
-  <button id="stopButton1" class="noloop-transport" type="button">no loop</button>
+  <button id="playButton1" class="loop-transport" type="button">synth</button>
   <fieldset>
     <legend>use slider for some dank memes</legend>
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
@@ -83,11 +82,8 @@ pitchShiftSlider.addEventListener('input', function() {
 
 // The following block of code will run when the play button is clicked
 
-// create a loop
-var loop = new Tone.Loop(function(time) {
-	synth.triggerAttackRelease("Db1", "8n", time);
-}, "4n");
 
+//LOOP FUNCTIONS
 // A universal loop that you can put any sound in
 function universalLoop(sound, rapid) {
   var soundLoop = new Tone.Loop(function(time) {
@@ -96,21 +92,41 @@ function universalLoop(sound, rapid) {
   soundLoop.start();
 }
 
+//loop for synth
+var synthLoop = new Tone.Loop(function(time) {
+	synth.triggerAttackRelease("Db1", "8n", time);
+}, "4n");
+
+//loop for oof
+var oofLoop = new Tone.Loop(function(time) {
+  oof.start(time);
+}, "4n");
+
+//loop for airHorn
+var airHornLoop = new Tone.Loop(function(time) {
+  air_horn.start(time);
+}, "2n");
+
+//Start all the loops
+synthLoop.start();
+//The "8n" means the oof is delayed by 1/8 note, aka syncopated.
+oofLoop.start("8n");
+airHornLoop.start();
+
+//Mute all the loops
+synthLoop.mute =
+oofLoop.mute = true;
+airHornLoop.mute = true;
+
+//BUTTON FUNCTIONS
 document.querySelector('#playButton1').onclick = function() {
   console.log('The loop has started');
-
-  // Start synth loop
-  loop.start()
+  if(synthLoop.mute===true){
+    synthLoop.mute = false;
+  } else {
+    synthLoop.mute = true
+  }
 };
-
-
-document.querySelector('#stopButton1').onclick = function() {
-  console.log('The loop has stopped');
-
-  // Stop synth loop
-  loop.stop();
-};
-
 
 // All the button functions
 document.querySelector('#playButton').onclick = function() {
@@ -129,15 +145,21 @@ document.querySelector('#stopButton').onclick = function() {
 
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
-  universalLoop(air_horn, "4n");
-  // Start air horn
-  //air_horn.start()
+  if(airHornLoop.mute===true){
+    airHornLoop.mute = false;
+  } else {
+    airHornLoop.mute = true
+  }
 };
 
 document.querySelector('#OOF').onclick = function() {
   console.log('rip roblox');
-
-  universalLoop(oof, "8n");
+  if(oofLoop.mute===true){
+    oofLoop.mute = false;
+  } else {
+    oofLoop.mute = true
+  }
+  //universalLoop(oof, "8n");
 };
 
 document.querySelector('#transportButton').onclick = function() {
