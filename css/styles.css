@@ -24,6 +24,11 @@ body {
   margin .2s;
 }
 
+.play-transport img {
+  width: 100px;
+  height: 100px;
+}
+
 .stop-transport {
   font-size: 1.5em;
   font-weight: 750;
