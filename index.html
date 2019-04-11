@@ -20,6 +20,7 @@
   <button id="OOF" class="oof-transport" type="button">OOF</button>
   <button id="transportButton" class="masterplay-transport" type="button">transport</button>
   <button id="playButton1" class="loop-transport" type="button">loop</button>
+  <button id="ricardo" class="rico-transport" type="button">rico</button>
   <fieldset>
     <legend>use slider for some dank memes</legend>
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
@@ -54,6 +55,7 @@ var clave = new Tone.Player('audio/clave.mp3').toMaster();
 var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
 var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster();
 var oof = new Tone.Player("audio/oof.mp3").toMaster();
+var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster();
 
 // Bind slider value to pitch shift amount
 // Every change in slider value triggers change in pitch shift
@@ -91,14 +93,6 @@ document.querySelector('#playButton1').onclick = function() {
   loop.start()
 };
 
-document.querySelector('#stopButton1').onclick = function() {
-  console.log('The loop has stopped');
-
-  // Stop synth loop
-  loop.stop();
-};
-
-
 // All the button functions
 document.querySelector('#playButton').onclick = function() {
   console.log('Initiating start protocol');
@@ -126,6 +120,13 @@ document.querySelector('#OOF').onclick = function() {
 
   // Start OOF
   oof.start()
+};
+
+document.querySelector('#ricardo').onclick = function() {
+  console.log('tunes');
+
+  // Start ricardo
+  ricosound.start()
 };
 
 document.querySelector('#transportButton').onclick = function() {
