@@ -22,6 +22,30 @@ body {
   border-radius .2s,
   padding .2s,
   margin .2s;
+  position: relative;
+  display: inline-block;
+}
+
+.play-transport img {
+  height: 88px;
+  width: 100px;
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 40px;
+}
+
+.play-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: limegreen;
+  border-color: limegreen;
+}
+
+.play-transport:hover img{
+  display: inline-flex;
 }
 
 .stop-transport {
@@ -40,6 +64,30 @@ body {
   border-radius .2s,
   padding .2s,
   margin .2s;
+  position: relative;
+  display: inline-block;
+}
+
+.stop-transport img {
+  height: 88px;
+  width: 100px;
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 52px;
+}
+
+.stop-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: red;
+  border-color: red;
+}
+
+.stop-transport:hover img{
+  display: inline-flex;
 }
 
 .horn-transport {
@@ -148,24 +196,6 @@ body {
   border-radius .2s,
   padding .2s,
   margin .2s;
-}
-
-.play-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: limegreen;
-  border-color: limegreen;
-}
-
-.stop-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: red;
-  border-color: red;
 }
 
 .horn-transport:hover {
