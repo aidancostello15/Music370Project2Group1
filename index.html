@@ -87,6 +87,7 @@
 <script>
 
 //memes
+// PITCH SHIFT VARIABLES
 // Create a pitch shifter and connect its output to the master out
 var pitchShift = new Tone.PitchShift().toMaster();
 var airHornPitchShift = new Tone.PitchShift().toMaster();
@@ -107,6 +108,7 @@ var synth = new Tone.Synth({
   }
 }).connect(synthPitchShift).connect(pitchShift);
 
+// SOUND FILES
 // Sample code to load a sound file
 // NOTE: This sound file is not played in this script
 var clave = new Tone.Player('audio/clave.mp3').toMaster();
@@ -197,6 +199,7 @@ synthLoop.mute = true
 oofLoop.mute = true;
 airHornLoop.mute = true;
 ricoLoop.mute = true
+
 Tone.Transport.start();
 
 // BUTTON FUNCTIONS
