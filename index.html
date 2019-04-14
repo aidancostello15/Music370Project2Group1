@@ -20,6 +20,9 @@
   <fieldset>
     <legend>Blow that horn!</legend>
     <button id="doNotPress" class="horn-transport" type="button">Air Horn On/Off</button>
+    <!-- REPLACE 4 BUTTON CLASSES BELOW  -->
+    <!-- (Ideally, replace the class for all speed buttons with a special
+          speed button class. Something smaller/rounder? Want distinct) -->
     <button id="airHornSpeed1" class="horn-transport" type="button">Speed 1</button>
     <button id="airHornSpeed2" class="horn-transport" type="button">Speed 2</button>
     <button id="airHornSpeed3" class="horn-transport" type="button">Speed 3</button>
@@ -33,6 +36,7 @@
   <fieldset>
     <legend>Punch somebody</legend>
     <button id="OOF" class="oof-transport" type="button">OOF On/Off</button>
+    <!-- REPLACE 4 BUTTON CLASSES BELOW -->
     <button id="oofSpeed1" class="oof-transport" type="button">Speed 1</button>
     <button id="oofSpeed2" class="oof-transport" type="button">Speed 2</button>
     <button id="oofSpeed3" class="oof-transport" type="button">Speed 3</button>
@@ -46,6 +50,7 @@
   <fieldset>
     <legend>Dubstep, amirite?</legend>
     <button id="playButton1" class="loop-transport" type="button">Synth On/Off</button>
+    <!-- REPLACE 4 BUTTON CLASSES BELOW -->
     <button id="synthSpeed1" class="loop-transport" type="button">Speed 1</button>
     <button id="synthSpeed2" class="loop-transport" type="button">Speed 2</button>
     <button id="synthSpeed3" class="loop-transport" type="button">Speed 3</button>
@@ -59,6 +64,7 @@
   <fieldset>
     <legend>Pretty, pretty!</legend>
     <button id="ricardo" class="rico-transport" type="button">Rico On/Off</button>
+    <!-- REPLACE 4 BUTTON CLASSES BELOW -->
     <button id="ricoSpeed1" class="rico-transport" type="button">Speed 1</button>
     <button id="ricoSpeed2" class="rico-transport" type="button">Speed 2</button>
     <button id="ricoSpeed3" class="rico-transport" type="button">Speed 3</button>
@@ -313,13 +319,13 @@ document.querySelector('#ricardo').onclick = function() {
 document.querySelector('#ricoSpeed1').onclick = function() {
   ricoLoop.interval = "1n";
 };
-document.querySelector('#ricoSpeed1').onclick = function() {
+document.querySelector('#ricoSpeed2').onclick = function() {
   ricoLoop.interval = "2n";
 };
-document.querySelector('#ricoSpeed1').onclick = function() {
+document.querySelector('#ricoSpeed3').onclick = function() {
   ricoLoop.interval = "4n";
 };
-document.querySelector('#ricoSpeed1').onclick = function() {
+document.querySelector('#ricoSpeed4').onclick = function() {
   ricoLoop.interval = "8n";
 };
 
