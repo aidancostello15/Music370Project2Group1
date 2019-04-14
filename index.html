@@ -24,9 +24,9 @@
     <button id="airHornSpeed2" class="horn-transport" type="button">Speed 2</button>
     <button id="airHornSpeed3" class="horn-transport" type="button">Speed 3</button>
     <button id="airHornSpeed4" class="horn-transport" type="button">Speed 4</button>
-    <label id="airHornPitchShiftLabel" for="airHornPitchShiftSlider">0</label>
     <fieldset>
-      <legend>get high (or low?)</legend>
+      <legend>get high (or low)</legend>
+      <label id="airHornPitchShiftLabel" for="airHornPitchShiftSlider">0</label>
       <input type="range" id="airHornPitchShiftSlider" name="airHornPitchShiftSlider" min="-14" max="14" step="0.5" />
     </fieldset>
   </fieldset>
@@ -37,6 +37,11 @@
     <button id="oofSpeed2" class="oof-transport" type="button">Speed 2</button>
     <button id="oofSpeed3" class="oof-transport" type="button">Speed 3</button>
     <button id="oofSpeed4" class="oof-transport" type="button">Speed 4</button>
+    <fieldset>
+      <legend>get high (or low)</legend>
+      <label id="oofPitchShiftLabel" for="oofPitchShiftSlider">0</label>
+      <input type="range" id="oofPitchShiftSlider" name="oofPitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
   </fieldset>
   <fieldset>
     <legend>Dubstep, amirite?</legend>
@@ -45,6 +50,11 @@
     <button id="synthSpeed2" class="loop-transport" type="button">Speed 2</button>
     <button id="synthSpeed3" class="loop-transport" type="button">Speed 3</button>
     <button id="synthSpeed4" class="loop-transport" type="button">Speed 4</button>
+    <fieldset>
+      <legend>get high (or low)</legend>
+      <label id="synthPitchShiftLabel" for="synthPitchShiftSlider">0</label>
+      <input type="range" id="synthPitchShiftSlider" name="synthPitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
   </fieldset>
   <fieldset>
     <legend>Pretty, pretty!</legend>
@@ -53,6 +63,11 @@
     <button id="ricoSpeed2" class="rico-transport" type="button">Speed 2</button>
     <button id="ricoSpeed3" class="rico-transport" type="button">Speed 3</button>
     <button id="ricoSpeed4" class="rico-transport" type="button">Speed 4</button>
+    <fieldset>
+      <legend>get high (or low)</legend>
+      <label id="ricoPitchShiftLabel" for="ricoPitchShiftSlider">0</label>
+      <input type="range" id="ricoPitchShiftSlider" name="ricoPitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
   </fieldset>
   <fieldset>
     <legend>Everybody wants to inhale helium or sulfur hexafluoride</legend>
@@ -72,6 +87,9 @@
 // Create a pitch shifter and connect its output to the master out
 var pitchShift = new Tone.PitchShift().toMaster();
 var airHornPitchShift = new Tone.PitchShift().toMaster();
+var oofPitchShift = new Tone.PitchShift().toMaster();
+var synthPitchShift = new Tone.PitchShift().toMaster();
+var ricoPitchShift = new Tone.PitchShift().toMaster();
 
 // Create a synth and connect it to the pitch shifter
 var synth = new Tone.Synth({
@@ -84,20 +102,22 @@ var synth = new Tone.Synth({
     sustain: 0.5,
     release: 1
   }
-}).connect(pitchShift);
+}).connect(synthPitchShift).connect(pitchShift);
 
 // Sample code to load a sound file
 // NOTE: This sound file is not played in this script
 var clave = new Tone.Player('audio/clave.mp3').toMaster();
 var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
-var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster().connect(airHornPitchShift);
-var oof = new Tone.Player("audio/oof.mp3").toMaster().connect(pitchShift);
-var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster().connect(pitchShift);
+var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster().connect(airHornPitchShift).connect(pitchShift);
+var oof = new Tone.Player("audio/oof.mp3").toMaster().connect(oofPitchShift).connect(pitchShift);
+var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster().connect(ricoPitchShift).connect(pitchShift);
 
 // Bind slider value to pitch shift amount
 // Every change in slider value triggers change in pitch shift
 // It's silly to pitch shift a synthesizer, right?
 // But what else could we pitch shift?
+
+//PITCH VARIABLES AND FUNCTIONS
 var pitchShiftLabel = document.querySelector('#pitchShiftLabel');
 var pitchShiftSlider = document.querySelector('#pitchShiftSlider');
 pitchShiftSlider.addEventListener('input', function() {
@@ -110,22 +130,30 @@ pitchShiftSlider.addEventListener('input', function() {
 var airHornPitchShiftLabel = document.querySelector('#airHornPitchShiftLabel');
 var airHornPitchShiftSlider = document.querySelector('#airHornPitchShiftSlider');
 airHornPitchShiftSlider.addEventListener('input', function() {
-  // assign slider value to pitch shift amount (in semitones)
   airHornPitchShift.pitch = airHornPitchShiftSlider.value;
-  // update slider label
   airHornPitchShiftLabel.innerHTML = airHornPitchShiftSlider.value;
 });
-
-// The following block of code will run when the play button is clicked
-// document.querySelector('#playButton1').onclick = function() {
-  // console.log('The play button has been clicked.');
-
-  // synth.triggerAttack("C4");
-
-  // Play a middle C, which will sound until the stop button is clicked
-// };
-
-// The following block of code will run when the play button is clicked
+//OofPitch
+var oofPitchShiftLabel = document.querySelector('#oofPitchShiftLabel');
+var oofPitchShiftSlider = document.querySelector('#oofPitchShiftSlider');
+oofPitchShiftSlider.addEventListener('input', function() {
+  oofPitchShift.pitch = oofPitchShiftSlider.value;
+  oofPitchShiftLabel.innerHTML = oofPitchShiftSlider.value;
+});
+//Synth Pitch
+var synthPitchShiftLabel = document.querySelector('#synthPitchShiftLabel');
+var synthPitchShiftSlider = document.querySelector('#synthPitchShiftSlider');
+synthPitchShiftSlider.addEventListener('input', function() {
+  synthPitchShift.pitch = synthPitchShiftSlider.value;
+  synthPitchShiftLabel.innerHTML = synthPitchShiftSlider.value;
+});
+//Rico Pitch
+var ricoPitchShiftLabel = document.querySelector('#ricoPitchShiftLabel');
+var ricoPitchShiftSlider = document.querySelector('#ricoPitchShiftSlider');
+ricoPitchShiftSlider.addEventListener('input', function() {
+  ricoPitchShift.pitch = ricoPitchShiftSlider.value;
+  ricoPitchShiftLabel.innerHTML = ricoPitchShiftSlider.value;
+});
 
 
 //LOOP FUNCTIONS
