@@ -177,7 +177,7 @@ var oofLoop = new Tone.Loop(function(time) {
 // loop for airHorn
 var airHornLoop = new Tone.Loop(function(time) {
   air_horn.start(time);
-}, "2n");
+}, "1n");
 
 // loop for rico
 var ricoLoop = new Tone.Loop(function(time) {
@@ -269,10 +269,10 @@ document.querySelector('#airHornSpeed2').onclick = function() {
   airHornLoop.interval = "1n";
 };
 document.querySelector('#airHornSpeed3').onclick = function() {
-  airHornLoop.interval = "2n";
+  airHornLoop.interval = "1t";
 };
 document.querySelector('#airHornSpeed4').onclick = function() {
-  airHornLoop.interval = "4n";
+  airHornLoop.interval = "2n";
 };
 
 // Oof button
@@ -317,16 +317,16 @@ document.querySelector('#ricardo').onclick = function() {
 };
 // Rico Speed Buttons
 document.querySelector('#ricoSpeed1').onclick = function() {
-  ricoLoop.interval = "1n";
+  ricoLoop.interval = "3m";
 };
 document.querySelector('#ricoSpeed2').onclick = function() {
-  ricoLoop.interval = "2n";
+  ricoLoop.interval = "2m";
 };
 document.querySelector('#ricoSpeed3').onclick = function() {
-  ricoLoop.interval = "4n";
+  ricoLoop.interval = "1n";
 };
 document.querySelector('#ricoSpeed4').onclick = function() {
-  ricoLoop.interval = "8n";
+  ricoLoop.interval = "2n";
 };
 
 
