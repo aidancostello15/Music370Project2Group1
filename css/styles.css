@@ -108,6 +108,15 @@ body {
   margin .2s;
 }
 
+.horn-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: orange;
+  border-color: orange;
+}
+
 .oof-transport {
   font-size: 1.5em;
   font-weight: 750;
@@ -126,6 +135,15 @@ body {
   margin .2s;
 }
 
+.oof-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: fuchsia;
+  border-color: darkviolet;
+}
+
 .masterplay-transport {
   font-size: 1.5em;
   font-weight: 750;
@@ -142,6 +160,15 @@ body {
   border-radius .2s,
   padding .2s,
   margin .2s;
+}
+
+.masterplay-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: coral;
+  border-color: coral;
 }
 
 .play-transport {
@@ -180,6 +207,15 @@ body {
   margin .2s;
 }
 
+.loop-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: limegreen;
+  border-color: limegreen;
+}
+
 .rico-transport {
   font-size: 1.5em;
   font-weight: 750;
@@ -196,6 +232,15 @@ body {
   border-radius .2s,
   padding .2s,
   margin .2s;
+}
+
+.rico-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: red;
+  border-color: red;
 }
 
 .speedstyle-transport {
@@ -216,69 +261,6 @@ body {
   margin .2s;
 }
 
-.play-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: limegreen;
-  border-color: limegreen;
-}
-
-.stop-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: red;
-  border-color: red;
-}
-
-.horn-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: orange;
-  border-color: orange;
-}
-
-.oof-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: fuchsia;
-  border-color: darkviolet;
-}
-
-.masterplay-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: coral;
-  border-color: coral;
-}
-
-.loop-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: limegreen;
-  border-color: limegreen;
-}
-
-.rico-transport:hover {
-  margin: 0;
-  padding: 1.1em 2.2em;
-  border-radius: 8px;
-  cursor: pointer;
-  color: red;
-  border-color: red;
-}
-
 .speedstyle-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
@@ -287,7 +269,6 @@ body {
   color: #E3E734;
   border-color: #E3E734;
 }
-
 
 label {
   display: block;
