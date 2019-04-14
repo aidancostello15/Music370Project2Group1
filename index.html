@@ -14,8 +14,8 @@
   <img src="images/clubpenguinfire.jpg" width="750" height="500">
 <main>
   <h2>Welcome to my Club Penguin fan page!</h2>
-  <button id="playButton" class="play-transport" type="button">kazoo</button>
-  <button id="stopButton" class="stop-transport" type="button">no kazoo</button>
+  <button id="playButton" class="play-transport" type="button"><img src="images/penguinguitar.jpg">kazoo</button>
+  <button id="stopButton" class="stop-transport" type="button"><img src="images/penguinguitarred.jpg">no kazoo</button>
   <button id="transportButton" class="masterplay-transport" type="button">transport</button>
   <fieldset>
     <legend>Blow that horn!</legend>
@@ -98,7 +98,7 @@ var ricoPitchShift = new Tone.PitchShift().toMaster();
 // Create a synth and connect it to the pitch shifter
 var synth = new Tone.Synth({
   oscillator: {
-    type: 'sawtooth'
+    type: 'sine'
   },
   envelope: {
     attack: 0.01,
@@ -115,7 +115,7 @@ var clave = new Tone.Player('audio/clave.mp3').toMaster();
 var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
 var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster().connect(airHornPitchShift).connect(pitchShift);
 var oof = new Tone.Player("audio/oof.mp3").toMaster().connect(oofPitchShift).connect(pitchShift);
-var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster().connect(ricoPitchShift).connect(pitchShift);
+var ricosound = new Tone.Player("audio/synthmelody.mp3").toMaster().connect(ricoPitchShift).connect(pitchShift);
 
 // PITCH VARIABLES, SLIDERS, AND FUNCTIONS
 // Synth Pitch
@@ -168,7 +168,7 @@ function universalLoop(sound, rapid) {
 
 // loop for synth
 var synthLoop = new Tone.Loop(function(time) {
-	synth.triggerAttackRelease("Db1", "8n", time);
+	synth.triggerAttackRelease("C2", "8n", time);
 }, "4n");
 
 // loop for oof
