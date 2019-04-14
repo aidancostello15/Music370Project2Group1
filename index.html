@@ -16,13 +16,46 @@
   <h2>Welcome to my Club Penguin fan page!</h2>
   <button id="playButton" class="play-transport" type="button">kazoo</button>
   <button id="stopButton" class="stop-transport" type="button">no kazoo</button>
-  <button id="doNotPress" class="horn-transport" type="button">air horn</button>
-  <button id="OOF" class="oof-transport" type="button">OOF</button>
   <button id="transportButton" class="masterplay-transport" type="button">transport</button>
-  <button id="playButton1" class="loop-transport" type="button">loop</button>
-  <button id="ricardo" class="rico-transport" type="button">rico</button>
   <fieldset>
-    <legend>use slider for some dank memes</legend>
+    <legend>Blow that horn!</legend>
+    <button id="doNotPress" class="horn-transport" type="button">Air Horn On/Off</button>
+    <button id="airHornSpeed1" class="horn-transport" type="button">Speed 1</button>
+    <button id="airHornSpeed2" class="horn-transport" type="button">Speed 2</button>
+    <button id="airHornSpeed3" class="horn-transport" type="button">Speed 3</button>
+    <button id="airHornSpeed4" class="horn-transport" type="button">Speed 4</button>
+    <label id="airHornPitchShiftLabel" for="airHornPitchShiftSlider">0</label>
+    <fieldset>
+      <legend>get high (or low?)</legend>
+      <input type="range" id="airHornPitchShiftSlider" name="airHornPitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
+  </fieldset>
+  <fieldset>
+    <legend>Punch somebody</legend>
+    <button id="OOF" class="oof-transport" type="button">OOF On/Off</button>
+    <button id="oofSpeed1" class="oof-transport" type="button">Speed 1</button>
+    <button id="oofSpeed2" class="oof-transport" type="button">Speed 2</button>
+    <button id="oofSpeed3" class="oof-transport" type="button">Speed 3</button>
+    <button id="oofSpeed4" class="oof-transport" type="button">Speed 4</button>
+  </fieldset>
+  <fieldset>
+    <legend>Dubstep, amirite?</legend>
+    <button id="playButton1" class="loop-transport" type="button">Synth On/Off</button>
+    <button id="synthSpeed1" class="loop-transport" type="button">Speed 1</button>
+    <button id="synthSpeed2" class="loop-transport" type="button">Speed 2</button>
+    <button id="synthSpeed3" class="loop-transport" type="button">Speed 3</button>
+    <button id="synthSpeed4" class="loop-transport" type="button">Speed 4</button>
+  </fieldset>
+  <fieldset>
+    <legend>Pretty, pretty!</legend>
+    <button id="ricardo" class="rico-transport" type="button">Rico On/Off</button>
+    <button id="ricoSpeed1" class="rico-transport" type="button">Speed 1</button>
+    <button id="ricoSpeed2" class="rico-transport" type="button">Speed 2</button>
+    <button id="ricoSpeed3" class="rico-transport" type="button">Speed 3</button>
+    <button id="ricoSpeed4" class="rico-transport" type="button">Speed 4</button>
+  </fieldset>
+  <fieldset>
+    <legend>Everybody wants to inhale helium or sulfur hexafluoride</legend>
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
     <input type="range" id="pitchShiftSlider" name="pitchShiftSlider" min="-14" max="14" step="0.5" />
   </fieldset>
@@ -38,6 +71,7 @@
 //memes
 // Create a pitch shifter and connect its output to the master out
 var pitchShift = new Tone.PitchShift().toMaster();
+var airHornPitchShift = new Tone.PitchShift().toMaster();
 
 // Create a synth and connect it to the pitch shifter
 var synth = new Tone.Synth({
@@ -56,9 +90,9 @@ var synth = new Tone.Synth({
 // NOTE: This sound file is not played in this script
 var clave = new Tone.Player('audio/clave.mp3').toMaster();
 var kazoo_kid = new Tone.Player("audio/kazoo_kid.mp3").connect(pitchShift);
-var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster();
-var oof = new Tone.Player("audio/oof.mp3").toMaster();
-var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster();
+var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster().connect(airHornPitchShift);
+var oof = new Tone.Player("audio/oof.mp3").toMaster().connect(pitchShift);
+var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster().connect(pitchShift);
 
 // Bind slider value to pitch shift amount
 // Every change in slider value triggers change in pitch shift
@@ -71,6 +105,15 @@ pitchShiftSlider.addEventListener('input', function() {
   pitchShift.pitch = pitchShiftSlider.value;
   // update slider label
   pitchShiftLabel.innerHTML = pitchShiftSlider.value;
+});
+//Air Horn Pitch
+var airHornPitchShiftLabel = document.querySelector('#airHornPitchShiftLabel');
+var airHornPitchShiftSlider = document.querySelector('#airHornPitchShiftSlider');
+airHornPitchShiftSlider.addEventListener('input', function() {
+  // assign slider value to pitch shift amount (in semitones)
+  airHornPitchShift.pitch = airHornPitchShiftSlider.value;
+  // update slider label
+  airHornPitchShiftLabel.innerHTML = airHornPitchShiftSlider.value;
 });
 
 // The following block of code will run when the play button is clicked
@@ -122,13 +165,14 @@ airHornLoop.start();
 ricoLoop.start();
 
 //Mute all the loops
-synthLoop.mute =
+synthLoop.mute = true
 oofLoop.mute = true;
 airHornLoop.mute = true;
 ricoLoop.mute = true
 Tone.Transport.start();
 
 //BUTTON FUNCTIONS
+//Synth Button
 document.querySelector('#playButton1').onclick = function() {
   console.log('The loop has started');
   Tone.context.resume();
@@ -142,6 +186,19 @@ document.querySelector('#playButton1').onclick = function() {
   } else {
     synthLoop.mute = true
   }
+};
+//Synth Speed Buttons
+document.querySelector('#synthSpeed1').onclick = function() {
+  synthLoop.interval = "1n";
+};
+document.querySelector('#synthSpeed2').onclick = function() {
+  synthLoop.interval = "2n";
+};
+document.querySelector('#synthSpeed3').onclick = function() {
+  synthLoop.interval = "4n";
+};
+document.querySelector('#synthSpeed4').onclick = function() {
+  synthLoop.interval = "8n";
 };
 
 // All the button functions
@@ -162,6 +219,7 @@ document.querySelector('#stopButton').onclick = function() {
   kazoo_kid.stop()
 };
 
+//Air Horn Button
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
   Tone.context.resume();
@@ -173,6 +231,19 @@ document.querySelector('#doNotPress').onclick = function() {
   } else {
     airHornLoop.mute = true
   }
+};
+//Air Horn Speed Buttons
+document.querySelector('#airHornSpeed1').onclick = function() {
+  airHornLoop.interval = "2m";
+};
+document.querySelector('#airHornSpeed2').onclick = function() {
+  airHornLoop.interval = "1n";
+};
+document.querySelector('#airHornSpeed3').onclick = function() {
+  airHornLoop.interval = "2n";
+};
+document.querySelector('#airHornSpeed4').onclick = function() {
+  airHornLoop.interval = "4n";
 };
 
 document.querySelector('#OOF').onclick = function() {
@@ -187,7 +258,21 @@ document.querySelector('#OOF').onclick = function() {
     oofLoop.mute = true
   }
 };
+//Oof speed Buttons
+document.querySelector('#oofSpeed1').onclick = function() {
+  oofLoop.interval = "1n";
+};
+document.querySelector('#oofSpeed2').onclick = function() {
+  oofLoop.interval = "2n";
+};
+document.querySelector('#oofSpeed3').onclick = function() {
+  oofLoop.interval = "4n";
+};
+document.querySelector('#oofSpeed4').onclick = function() {
+  oofLoop.interval = "8n";
+};
 
+//Rico Button
 document.querySelector('#ricardo').onclick = function() {
   console.log('tunes');
   Tone.context.resume();
@@ -200,6 +285,20 @@ document.querySelector('#ricardo').onclick = function() {
   ricoLoop.mute = true
   }
 };
+//Rico Speed Buttons
+document.querySelector('#ricoSpeed1').onclick = function() {
+  ricoLoop.interval = "1n";
+};
+document.querySelector('#ricoSpeed1').onclick = function() {
+  ricoLoop.interval = "2n";
+};
+document.querySelector('#ricoSpeed1').onclick = function() {
+  ricoLoop.interval = "4n";
+};
+document.querySelector('#ricoSpeed1').onclick = function() {
+  ricoLoop.interval = "8n";
+};
+
 
 document.querySelector('#transportButton').onclick = function() {
   console.log('transport dat ish');
