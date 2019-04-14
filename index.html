@@ -80,9 +80,6 @@
 
 <script>
 
-//VOLUME:
-//synth.volume.value = 0 (interpreted in decibels, -5, -12, +2, -1, etc)
-
 //memes
 // Create a pitch shifter and connect its output to the master out
 var pitchShift = new Tone.PitchShift().toMaster();
@@ -112,12 +109,8 @@ var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster().connect(airHornP
 var oof = new Tone.Player("audio/oof.mp3").toMaster().connect(oofPitchShift).connect(pitchShift);
 var ricosound = new Tone.Player("audio/ricosound.mp3").toMaster().connect(ricoPitchShift).connect(pitchShift);
 
-// Bind slider value to pitch shift amount
-// Every change in slider value triggers change in pitch shift
-// It's silly to pitch shift a synthesizer, right?
-// But what else could we pitch shift?
-
-//PITCH VARIABLES AND FUNCTIONS
+// PITCH VARIABLES, SLIDERS, AND FUNCTIONS
+// Synth Pitch
 var pitchShiftLabel = document.querySelector('#pitchShiftLabel');
 var pitchShiftSlider = document.querySelector('#pitchShiftSlider');
 pitchShiftSlider.addEventListener('input', function() {
@@ -126,28 +119,28 @@ pitchShiftSlider.addEventListener('input', function() {
   // update slider label
   pitchShiftLabel.innerHTML = pitchShiftSlider.value;
 });
-//Air Horn Pitch
+// Air Horn Pitch
 var airHornPitchShiftLabel = document.querySelector('#airHornPitchShiftLabel');
 var airHornPitchShiftSlider = document.querySelector('#airHornPitchShiftSlider');
 airHornPitchShiftSlider.addEventListener('input', function() {
   airHornPitchShift.pitch = airHornPitchShiftSlider.value;
   airHornPitchShiftLabel.innerHTML = airHornPitchShiftSlider.value;
 });
-//OofPitch
+// Oof Pitch
 var oofPitchShiftLabel = document.querySelector('#oofPitchShiftLabel');
 var oofPitchShiftSlider = document.querySelector('#oofPitchShiftSlider');
 oofPitchShiftSlider.addEventListener('input', function() {
   oofPitchShift.pitch = oofPitchShiftSlider.value;
   oofPitchShiftLabel.innerHTML = oofPitchShiftSlider.value;
 });
-//Synth Pitch
+// Synth Pitch
 var synthPitchShiftLabel = document.querySelector('#synthPitchShiftLabel');
 var synthPitchShiftSlider = document.querySelector('#synthPitchShiftSlider');
 synthPitchShiftSlider.addEventListener('input', function() {
   synthPitchShift.pitch = synthPitchShiftSlider.value;
   synthPitchShiftLabel.innerHTML = synthPitchShiftSlider.value;
 });
-//Rico Pitch
+// Rico Pitch
 var ricoPitchShiftLabel = document.querySelector('#ricoPitchShiftLabel');
 var ricoPitchShiftSlider = document.querySelector('#ricoPitchShiftSlider');
 ricoPitchShiftSlider.addEventListener('input', function() {
@@ -156,7 +149,7 @@ ricoPitchShiftSlider.addEventListener('input', function() {
 });
 
 
-//LOOP FUNCTIONS
+// LOOP FUNCTIONS
 // A universal loop that you can put any sound in
 function universalLoop(sound, rapid) {
   var soundLoop = new Tone.Loop(function(time) {
@@ -165,57 +158,58 @@ function universalLoop(sound, rapid) {
   soundLoop.start();
 }
 
-//loop for synth
+// loop for synth
 var synthLoop = new Tone.Loop(function(time) {
 	synth.triggerAttackRelease("Db1", "8n", time);
 }, "4n");
 
-//loop for oof
+// loop for oof
 var oofLoop = new Tone.Loop(function(time) {
   oof.start(time);
 }, "4n");
 
-//loop for airHorn
+// loop for airHorn
 var airHornLoop = new Tone.Loop(function(time) {
   air_horn.start(time);
 }, "2n");
 
+// loop for rico
 var ricoLoop = new Tone.Loop(function(time) {
   ricosound.start(time);
 }, "1n");
 
 
-//Start all the loops
+// START all the loops
 synthLoop.start();
-//The "8n" means the oof is delayed by 1/8 note, aka syncopated.
+// The "8n" means the oof is delayed by 1/8 note, aka syncopated.
 oofLoop.start("8n");
 airHornLoop.start();
 ricoLoop.start();
 
-//Mute all the loops
+// MUTE all the loops
 synthLoop.mute = true
 oofLoop.mute = true;
 airHornLoop.mute = true;
 ricoLoop.mute = true
 Tone.Transport.start();
 
-//BUTTON FUNCTIONS
-//Synth Button
+// BUTTON FUNCTIONS
+// Synth Button
 document.querySelector('#playButton1').onclick = function() {
   console.log('The loop has started');
   Tone.context.resume();
-  //This if statement will start the transport if it has not started
+  // This if statement will start the transport if it has not started
   if(Tone.Transport.State=="stopped") {
     Tone.Transport.start();
   };
-  //This if statement will decide whether to mute/unmute
+  // This if statement will decide whether to mute/unmute
   if(synthLoop.mute===true){
     synthLoop.mute = false;
   } else {
     synthLoop.mute = true
   }
 };
-//Synth Speed Buttons
+// Synth Speed Buttons
 document.querySelector('#synthSpeed1').onclick = function() {
   synthLoop.interval = "1n";
 };
@@ -229,17 +223,18 @@ document.querySelector('#synthSpeed4').onclick = function() {
   synthLoop.interval = "8n";
 };
 
-// All the button functions
+// Kazoo kid start
 document.querySelector('#playButton').onclick = function() {
   console.log('Initiating start protocol');
   Tone.context.resume();
   if(Tone.Transport.State=="stopped") {
     Tone.Transport.start();
   };
-  // Start Kazoo Kid
+  // Starts Kazoo Kid
   kazoo_kid.start()
 };
 
+// Kazoo kid stop
 document.querySelector('#stopButton').onclick = function() {
   console.log('Initiating stop protocol');
 
@@ -247,7 +242,7 @@ document.querySelector('#stopButton').onclick = function() {
   kazoo_kid.stop()
 };
 
-//Air Horn Button
+// Air Horn Button
 document.querySelector('#doNotPress').onclick = function() {
   console.log('The world is ending');
   Tone.context.resume();
@@ -260,7 +255,7 @@ document.querySelector('#doNotPress').onclick = function() {
     airHornLoop.mute = true
   }
 };
-//Air Horn Speed Buttons
+// Air Horn Speed Buttons
 document.querySelector('#airHornSpeed1').onclick = function() {
   airHornLoop.interval = "2m";
 };
@@ -274,6 +269,7 @@ document.querySelector('#airHornSpeed4').onclick = function() {
   airHornLoop.interval = "4n";
 };
 
+// Oof button
 document.querySelector('#OOF').onclick = function() {
   console.log('rip roblox');
   Tone.context.resume();
@@ -286,7 +282,7 @@ document.querySelector('#OOF').onclick = function() {
     oofLoop.mute = true
   }
 };
-//Oof speed Buttons
+// Oof speed Buttons
 document.querySelector('#oofSpeed1').onclick = function() {
   oofLoop.interval = "1n";
 };
@@ -300,7 +296,7 @@ document.querySelector('#oofSpeed4').onclick = function() {
   oofLoop.interval = "8n";
 };
 
-//Rico Button
+// Rico Button
 document.querySelector('#ricardo').onclick = function() {
   console.log('tunes');
   Tone.context.resume();
@@ -313,7 +309,7 @@ document.querySelector('#ricardo').onclick = function() {
   ricoLoop.mute = true
   }
 };
-//Rico Speed Buttons
+// Rico Speed Buttons
 document.querySelector('#ricoSpeed1').onclick = function() {
   ricoLoop.interval = "1n";
 };
@@ -330,10 +326,8 @@ document.querySelector('#ricoSpeed1').onclick = function() {
 
 document.querySelector('#transportButton').onclick = function() {
   console.log('transport dat ish');
-
   // Start the audio context
   Tone.context.resume();
-
   // Start or stop transport
   Tone.Transport.toggle();
 };
