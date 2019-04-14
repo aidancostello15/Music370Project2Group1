@@ -150,6 +150,24 @@ body {
   margin .2s;
 }
 
+.speedstyle-transport {
+  font-size: 1em;
+  font-weight: 750;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #dcdcdc;
+  padding: 1em 2em;
+  margin: .1em .2em;
+  border: 3px solid #5fbad7;
+  border-radius: 3px;
+  background: none;
+  transition: color .1s,
+  border .1s,
+  border-color .2s,
+  border-radius .2s,
+  padding .2s,
+  margin .2s;
+}
+
 .play-transport:hover {
   margin: 0;
   padding: 1.1em 2.2em;
@@ -173,8 +191,8 @@ body {
   padding: 1.1em 2.2em;
   border-radius: 8px;
   cursor: pointer;
-  color: purple;
-  border-color: purple;
+  color: orange;
+  border-color: orange;
 }
 
 .oof-transport:hover {
@@ -212,6 +230,16 @@ body {
   color: red;
   border-color: red;
 }
+
+.speedstyle-transport:hover {
+  margin: 0;
+  padding: 1.1em 2.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #E3E734;
+  border-color: #E3E734;
+}
+
 
 label {
   display: block;
