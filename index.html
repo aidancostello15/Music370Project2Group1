@@ -32,6 +32,11 @@
       <label id="airHornPitchShiftLabel" for="airHornPitchShiftSlider">0</label>
       <input type="range" id="airHornPitchShiftSlider" name="airHornPitchShiftSlider" min="-14" max="14" step="0.5" />
     </fieldset>
+    <fieldset>
+      <legend>let's get turnt (volume)</legend>
+      <label id="airHornVolumeLabel" for="airHornVolumeSlider">0</label>
+      <input type="range" id="airHornVolumeSlider" name="airHornVolumeSlider" min="-20" max="5" step="1" />
+    </fieldset>
   </fieldset>
   <fieldset>
     <legend>Punch somebody</legend>
@@ -45,6 +50,11 @@
       <legend>get high (or low)</legend>
       <label id="oofPitchShiftLabel" for="oofPitchShiftSlider">0</label>
       <input type="range" id="oofPitchShiftSlider" name="oofPitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
+    <fieldset>
+      <legend>let's get turnt (volume)</legend>
+      <label id="oofVolumeLabel" for="oofVolumeSlider">0</label>
+      <input type="range" id="oofVolumeSlider" name="oofVolumeSlider" min="-20" max="5" step="1" />
     </fieldset>
   </fieldset>
   <fieldset>
@@ -60,6 +70,11 @@
       <label id="synthPitchShiftLabel" for="synthPitchShiftSlider">0</label>
       <input type="range" id="synthPitchShiftSlider" name="synthPitchShiftSlider" min="-14" max="14" step="0.5" />
     </fieldset>
+    <fieldset>
+      <legend>let's get turnt (volume)</legend>
+      <label id="synthVolumeLabel" for="synthVolumeSlider">0</label>
+      <input type="range" id="synthVolumeSlider" name="synthVolumeSlider" min="-20" max="5" step="1" />
+    </fieldset>
   </fieldset>
   <fieldset>
     <legend>Pretty, pretty!</legend>
@@ -73,6 +88,11 @@
       <legend>get high (or low)</legend>
       <label id="ricoPitchShiftLabel" for="ricoPitchShiftSlider">0</label>
       <input type="range" id="ricoPitchShiftSlider" name="ricoPitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
+    <fieldset>
+      <legend>let's get turnt (volume)</legend>
+      <label id="ricoVolumeLabel" for="ricoVolumeSlider">0</label>
+      <input type="range" id="ricoVolumeSlider" name="ricoVolumeSlider" min="-20" max="5" step="1" />
     </fieldset>
   </fieldset>
   <fieldset>
@@ -154,6 +174,39 @@ var ricoPitchShiftSlider = document.querySelector('#ricoPitchShiftSlider');
 ricoPitchShiftSlider.addEventListener('input', function() {
   ricoPitchShift.pitch = ricoPitchShiftSlider.value;
   ricoPitchShiftLabel.innerHTML = ricoPitchShiftSlider.value;
+});
+
+//VOLUME VARIABLES, SLIDERS, AND FUNCTIONS
+// Air Horn Volume
+var airHornVolumeLabel = document.querySelector('#airHornVolumeLabel');
+var airHornVolumeSlider = document.querySelector('#airHornVolumeSlider');
+airHornVolumeSlider.addEventListener('input', function() {
+  air_horn.volume.value = airHornVolumeSlider.value;
+  airHornVolumeLabel.innerHTML = airHornVolumeSlider.value;
+});
+
+// Oof Volume
+var oofVolumeLabel = document.querySelector('#oofVolumeLabel');
+var oofVolumeSlider = document.querySelector('#oofVolumeSlider');
+oofVolumeSlider.addEventListener('input', function() {
+  oof.volume.value = oofVolumeSlider.value;
+  oofVolumeLabel.innerHTML = oofVolumeSlider.value;
+});
+
+// Synth Volume
+var synthVolumeLabel = document.querySelector('#synthVolumeLabel');
+var synthVolumeSlider = document.querySelector('#synthVolumeSlider');
+synthVolumeSlider.addEventListener('input', function() {
+  synth.volume.value = synthVolumeSlider.value;
+  synthVolumeLabel.innerHTML = synthVolumeSlider.value;
+});
+
+// Air Horn Volume
+var ricoVolumeLabel = document.querySelector('#ricoVolumeLabel');
+var ricoVolumeSlider = document.querySelector('#ricoVolumeSlider');
+ricoVolumeSlider.addEventListener('input', function() {
+  ricosound.volume.value = ricoVolumeSlider.value;
+  ricoVolumeLabel.innerHTML = ricoVolumeSlider.value;
 });
 
 
