@@ -89,6 +89,11 @@
       <label id="synth1PitchShiftLabel" for="synth1PitchShiftSlider">0</label>
       <input type="range" id="synth1PitchShiftSlider" name="synth1PitchShiftSlider" min="-14" max="14" step="0.5" />
     </fieldset>
+    <fieldset>
+      <legend>let's get turnt (volume)</legend>
+      <label id="synth1VolumeLabel" for="synth1VolumeSlider">0</label>
+      <input type="range" id="synth1VolumeSlider" name="synth1VolumeSlider" min="-20" max="5" step="1" />
+    </fieldset>
   </fieldset>
   <fieldset>
     <legend>Bouncy, bouncy!</legend>
@@ -105,8 +110,8 @@
     </fieldset>
     <fieldset>
       <legend>let's get turnt (volume)</legend>
-      <label id="ricoVolumeLabel" for="ricoVolumeSlider">0</label>
-      <input type="range" id="ricoVolumeSlider" name="ricoVolumeSlider" min="-20" max="5" step="1" />
+      <label id="synth2VolumeLabel" for="synth2VolumeSlider">0</label>
+      <input type="range" id="synth2VolumeSlider" name="synth2VolumeSlider" min="-20" max="5" step="1" />
     </fieldset>
   </fieldset>
   <fieldset>
@@ -121,6 +126,11 @@
       <legend>get high (or low)</legend>
       <label id="synth3PitchShiftLabel" for="synth3PitchShiftSlider">0</label>
       <input type="range" id="synth3PitchShiftSlider" name="synth3PitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
+    <fieldset>
+      <legend>let's get turnt (volume)</legend>
+      <label id="synth3VolumeLabel" for="synth3VolumeSlider">0</label>
+      <input type="range" id="synth3VolumeSlider" name="synth3VolumeSlider" min="-20" max="5" step="1" />
     </fieldset>
   </fieldset>
   <fieldset>
@@ -248,12 +258,28 @@ synthVolumeSlider.addEventListener('input', function() {
   synthVolumeLabel.innerHTML = synthVolumeSlider.value;
 });
 
-// Air Horn Volume
-var ricoVolumeLabel = document.querySelector('#ricoVolumeLabel');
-var ricoVolumeSlider = document.querySelector('#ricoVolumeSlider');
-ricoVolumeSlider.addEventListener('input', function() {
-  ricosound.volume.value = ricoVolumeSlider.value;
-  ricoVolumeLabel.innerHTML = ricoVolumeSlider.value;
+// Synth Volume
+var synth1VolumeLabel = document.querySelector('#synth1VolumeLabel');
+var synth1VolumeSlider = document.querySelector('#synth1VolumeSlider');
+synth1VolumeSlider.addEventListener('input', function() {
+  synth1sound.volume.value = synth1VolumeSlider.value;
+  synth1VolumeLabel.innerHTML = synth1VolumeSlider.value;
+});
+
+// synth 2 Volume
+var synth2VolumeLabel = document.querySelector('#synth2VolumeLabel');
+var synth2VolumeSlider = document.querySelector('#synth2VolumeSlider');
+synth2VolumeSlider.addEventListener('input', function() {
+  synth2sound.volume.value = synth2VolumeSlider.value;
+  synth2VolumeLabel.innerHTML = synth2VolumeSlider.value;
+});
+
+// Synth 3 Volume
+var synth3VolumeLabel = document.querySelector('#synth3VolumeLabel');
+var synth3VolumeSlider = document.querySelector('#synth3VolumeSlider');
+synth3VolumeSlider.addEventListener('input', function() {
+  synth3sound.volume.value = synth3VolumeSlider.value;
+  synth3VolumeLabel.innerHTML = synth3VolumeSlider.value;
 });
 
 // LOOP FUNCTIONS
