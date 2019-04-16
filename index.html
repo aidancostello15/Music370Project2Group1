@@ -110,6 +110,20 @@
     </fieldset>
   </fieldset>
   <fieldset>
+    <legend>Have fun!</legend>
+    <button id="synth3" class="synth3-transport" type="button">Synth Harmony On/Off</button>
+    <!-- REPLACE 4 BUTTON CLASSES BELOW -->
+    <button id="synth3Speed1" class="speedstyle-transport" type="button">Speed 1</button>
+    <button id="synth3Speed2" class="speedstyle-transport" type="button">Speed 2</button>
+    <button id="synth3Speed3" class="speedstyle-transport" type="button">Speed 3</button>
+    <button id="synth3Speed4" class="speedstyle-transport" type="button">Speed 4</button>
+    <fieldset>
+      <legend>get high (or low)</legend>
+      <label id="synth3PitchShiftLabel" for="synth3PitchShiftSlider">0</label>
+      <input type="range" id="synth3PitchShiftSlider" name="synth3PitchShiftSlider" min="-14" max="14" step="0.5" />
+    </fieldset>
+  </fieldset>
+  <fieldset>
     <legend>Everybody wants to inhale helium or sulfur hexafluoride</legend>
     <label id="pitchShiftLabel" for="pitchShiftSlider">0</label>
     <input type="range" id="pitchShiftSlider" name="pitchShiftSlider" min="-14" max="14" step="0.5" />
@@ -129,6 +143,7 @@ var oofPitchShift = new Tone.PitchShift().toMaster();
 var synthPitchShift = new Tone.PitchShift().toMaster();
 var synth1PitchShift = new Tone.PitchShift().toMaster();
 var synth2PitchShift = new Tone.PitchShift().toMaster();
+var synth3PitchShift = new Tone.PitchShift().toMaster();
 
 // Create a synth and connect it to the pitch shifter
 var synth = new Tone.Synth({
@@ -152,6 +167,8 @@ var air_horn = new Tone.Player("audio/air_horn.mp3").toMaster().connect(airHornP
 var oof = new Tone.Player("audio/oof.mp3").toMaster().connect(oofPitchShift).connect(pitchShift);
 var synth1sound = new Tone.Player("audio/synthmelody.mp3").toMaster().connect(synth1PitchShift).connect(pitchShift);
 var synth2sound = new Tone.Player("audio/synthrhythm.mp3").toMaster().connect(synth2PitchShift).connect(pitchShift);
+var synth3sound = new Tone.Player("audio/synthharmony.mp3").toMaster().connect(synth3PitchShift).connect(pitchShift);
+
 
 // PITCH VARIABLES, SLIDERS, AND FUNCTIONS
 // Synth Pitch
@@ -197,6 +214,13 @@ var synth2PitchShiftSlider = document.querySelector('#synth2PitchShiftSlider');
 synth2PitchShiftSlider.addEventListener('input', function() {
   synth2PitchShift.pitch = synth2PitchShiftSlider.value;
   synth2PitchShiftLabel.innerHTML = synth2PitchShiftSlider.value;
+});
+// synth3 Pitch
+var synth3PitchShiftLabel = document.querySelector('#synth3PitchShiftLabel');
+var synth3PitchShiftSlider = document.querySelector('#synth3PitchShiftSlider');
+synth3PitchShiftSlider.addEventListener('input', function() {
+  synth3PitchShift.pitch = synth3PitchShiftSlider.value;
+  synth3PitchShiftLabel.innerHTML = synth3PitchShiftSlider.value;
 });
 
 //VOLUME VARIABLES, SLIDERS, AND FUNCTIONS
@@ -259,13 +283,17 @@ var airHornLoop = new Tone.Loop(function(time) {
 // loop for synth1
 var synth1Loop = new Tone.Loop(function(time) {
   synth1sound.start(time);
-}, "1n");
+}, "2m");
 
 // loop for synth2
 var synth2Loop = new Tone.Loop(function(time) {
   synth2sound.start(time);
-}, "1n");
+}, "2m");
 
+// loop for synth3
+var synth3Loop = new Tone.Loop(function(time) {
+  synth3sound.start(time);
+}, "2m");
 
 // START all the loops
 synthLoop.start();
@@ -274,6 +302,7 @@ oofLoop.start("8n");
 airHornLoop.start();
 synth1Loop.start();
 synth2Loop.start();
+synth3Loop.start();
 
 // MUTE all the loops
 synthLoop.mute = true
@@ -281,6 +310,7 @@ oofLoop.mute = true;
 airHornLoop.mute = true;
 synth1Loop.mute = true
 synth2Loop.mute = true
+synth3Loop.mute = true
 
 Tone.Transport.start();
 
@@ -439,6 +469,33 @@ document.querySelector('#synth2Speed3').onclick = function() {
 };
 document.querySelector('#synth2Speed4').onclick = function() {
   synth2Loop.interval = "2n";
+};
+
+// synth3 Button
+document.querySelector('#synth3').onclick = function() {
+  console.log('tunes');
+  Tone.context.resume();
+  if(Tone.Transport.State=="stopped") {
+    Tone.Transport.start();
+  }
+  if(synth3Loop.mute===true){
+    synth3Loop.mute = false;
+  } else {
+  synth3Loop.mute = true
+  }
+};
+// synth3 Speed Buttons
+document.querySelector('#synth3Speed1').onclick = function() {
+  synth3Loop.interval = "3m";
+};
+document.querySelector('#synth3Speed2').onclick = function() {
+  synth3Loop.interval = "2m";
+};
+document.querySelector('#synth3Speed3').onclick = function() {
+  synth3Loop.interval = "1n";
+};
+document.querySelector('#synth3Speed4').onclick = function() {
+  synth3Loop.interval = "2n";
 };
 
 
